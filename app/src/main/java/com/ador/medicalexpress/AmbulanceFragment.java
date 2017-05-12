@@ -3,34 +3,52 @@ package com.ador.medicalexpress;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AmbulanceFragment extends Fragment {
 
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+
+    String[] aNames,aphones;
+    ArrayList<Ambulence> arrayList = new ArrayList<>();
 
     public AmbulanceFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-       // ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Ambulance Finder");
-        return inflater.inflate(R.layout.fragment_ambulance, container, false);
+        View view = inflater.inflate(R.layout.fragment_ambulance, container, false);
+        recyclerView = (RecyclerView)view.findViewById(R.id.ambulence_recyclerView);
+        aNames = getResources().getStringArray(R.array.ambulenceName);
+        aphones = getResources().getStringArray(R.array.ambulencePhn);
+
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        int i = 0;
+        for(String name:aNames){
+
+            Ambulence ambulence = new Ambulence(name,aphones[i]);
+            arrayList.add(ambulence);
+            i++;
+        }
+        adapter = new AmbulenceRecyclerAdapter(arrayList,getActivity());
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 
 }

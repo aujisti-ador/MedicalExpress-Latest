@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragments(new NearbyFragment(),"");
         viewPagerAdapter.addFragments(new AmbulanceFragment(),"");
         viewPagerAdapter.addFragments(new BloodFragment(),"");
-
+        viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
