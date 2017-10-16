@@ -3,18 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_doctor"
-        android:icon="@drawable/ic_action_doctor"
+        android:id="@+id/action_blood"
+        android:icon="@mipmap/requ_blood"
         android:title="doctor"
         app:showAsAction="always"
         />
 
-    <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="Search"
-        app:showAsAction="always"
-        />
     <item
         android:id="@+id/action_share"
         android:title="Share"

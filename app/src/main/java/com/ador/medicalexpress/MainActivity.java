@@ -1,13 +1,18 @@
 package com.ador.medicalexpress;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import static com.ador.medicalexpress.R.drawable.ambulance;
@@ -96,6 +101,38 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Share!", Toast.LENGTH_SHORT).show();
         }
+        else if (res_id==R.id.action_blood)
+        {
+
+
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.request_blood_form,null);
+                final EditText name = (EditText) mView.findViewById(R.id.et_name);
+                final EditText blood_group = (EditText) mView.findViewById(R.id.et_bloodGroup);
+                final EditText place = (EditText) mView.findViewById(R.id.et_place);
+                final EditText phone_number = (EditText) mView.findViewById(R.id.et_phone);
+                final EditText date = (EditText) mView.findViewById(R.id.et_date);
+                Button requ = (Button) mView.findViewById(R.id.btn_requ);
+
+                requ.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!name.getText().toString().isEmpty() && !blood_group.getText().toString().isEmpty())
+                        {
+                            Toast.makeText(MainActivity.this, "Its Works!", Toast.LENGTH_SHORT).show();
+
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Not Works!", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+            alertBuilder.setView(mView);
+            AlertDialog dialog = alertBuilder.create();
+            dialog.show();
+
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -105,5 +142,4 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
-
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request For Blood"
+        android:layout_gravity="center"
+        android:textSize="20dp"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/app_logo"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"/>
+
+    <EditText
+        android:id="@+id/et_bloodGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Blood Group"/>
+
+    <EditText
+        android:id="@+id/et_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Place"/>
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"/>
+
+    <EditText
+        android:id="@+id/et_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date"/>
+
+    <Button
+        android:id="@+id/btn_requ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

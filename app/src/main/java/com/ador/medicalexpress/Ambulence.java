@@ -18,15 +18,9 @@ public class Ambulence {
         return ambulenceName;
     }
 
-    public void setAmbulenceName(String ambulenceName) {
-        this.ambulenceName = ambulenceName;
-    }
 
     public String getAmbulenceNumber() {
         return ambulenceNumber;
     }
 
-    public void setAmbulenceNumber(String ambulenceNumber) {
-        this.ambulenceNumber = ambulenceNumber;
-    }
 }
