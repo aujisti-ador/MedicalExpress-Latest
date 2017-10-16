@@ -15,10 +15,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.ador.medicalexpress.R.drawable.ambulance;
 import static com.ador.medicalexpress.R.drawable.blood;
 import static com.ador.medicalexpress.R.drawable.hospital;
 import static com.ador.medicalexpress.R.drawable.location;
+
+
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -46,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         toolbar.setTitle(tabsTitles[0]);
@@ -106,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
-                View mView = getLayoutInflater().inflate(R.layout.request_blood_form,null);
+                final View mView = getLayoutInflater().inflate(R.layout.request_blood_form,null);
                 final EditText name = (EditText) mView.findViewById(R.id.et_name);
                 final EditText blood_group = (EditText) mView.findViewById(R.id.et_bloodGroup);
                 final EditText place = (EditText) mView.findViewById(R.id.et_place);
@@ -114,23 +129,86 @@ public class MainActivity extends AppCompatActivity {
                 final EditText date = (EditText) mView.findViewById(R.id.et_date);
                 Button requ = (Button) mView.findViewById(R.id.btn_requ);
 
+                alertBuilder.setView(mView);
+                final AlertDialog dialog = alertBuilder.create();
+                dialog.show();
+
+
                 requ.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!name.getText().toString().isEmpty() && !blood_group.getText().toString().isEmpty())
+                        if( name.getText().toString().length() == 0 )
+                            name.setError( "Name is required!" );
+                        else if( blood_group.getText().toString().length() == 0 )
+                            blood_group.setError( "Blood Group is required!" );
+                        else if( place.getText().toString().length() == 0 )
+                            place.setError( "Place is required!" );
+                        else if( phone_number.getText().toString().length() == 0 )
+                            phone_number.setError( "Phone Number is required!" );
+                        else if( date.getText().toString().length() == 0 )
+                            date.setError( "Date is required!" );
+
+                        if (name.getText().toString().length() > 0 && blood_group.getText().toString().length() > 0 && place.getText().toString().length() > 0 && phone_number.getText().toString().length() > 0 && date.getText().toString().length() > 0)
+
                         {
-                            Toast.makeText(MainActivity.this, "Its Works!", Toast.LENGTH_SHORT).show();
+                            //private static final String URL_DATA = "http://fazlerabbiador.000webhostapp.com/medex/getAllEmp.php";
+                            final String URL_DATA = "http://192.168.0.103/PHP_Practice/medex/addEmp.php";
+
+
+
+                            // Creating string request with post method.
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String ServerResponse) {
+
+                                            // Hiding the progress dialog after all task complete.
+                                            //progressDialog.dismiss();
+
+                                            // Showing response message coming from server.
+                                            Toast.makeText(MainActivity.this, ServerResponse, Toast.LENGTH_LONG).show();
+                                            dialog.dismiss();
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError volleyError) {
+
+                                            // Hiding the progress dialog after all task complete.
+                                            //progressDialog.dismiss();
+
+                                            // Showing error message if something goes wrong.
+                                            Toast.makeText(MainActivity.this, volleyError.toString(), Toast.LENGTH_LONG).show();
+                                        }
+                                    }) {
+                                @Override
+                                protected Map<String, String> getParams() {
+
+                                    // Creating Map String Params.
+                                    Map<String, String> params = new HashMap<String, String>();
+
+                                    // Adding All values to Params.
+                                    params.put("name", name.getText().toString());
+                                    params.put("blood_group", blood_group.getText().toString());
+                                    params.put("place", place.getText().toString());
+                                    params.put("phone_number", phone_number.getText().toString());
+                                    params.put("date", date.getText().toString());
+
+                                    return params;
+                                }
+
+                            };
+                            // Creating RequestQueue.
+                            RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+
+                            // Adding the StringRequest object into requestQueue.
+                            requestQueue.add(stringRequest);
 
                         }
-                        else {
-                            Toast.makeText(MainActivity.this, "Not Works!", Toast.LENGTH_SHORT).show();
 
-                        }
                     }
                 });
-            alertBuilder.setView(mView);
-            AlertDialog dialog = alertBuilder.create();
-            dialog.show();
 
         }
         return super.onOptionsItemSelected(item);
