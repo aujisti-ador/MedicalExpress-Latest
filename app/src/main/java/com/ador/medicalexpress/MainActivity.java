@@ -252,9 +252,8 @@ public class MainActivity extends AppCompatActivity {
 
                         {
                             //private static final String URL_DATA = "http://fazlerabbiador.000webhostapp.com/medex/getAllEmp.php";
-                            //final String URL_DATA = "http://192.168.0.103/PHP_Practice/medex/addBloodRequ.php";
-                            final String URL_DATA = "https://fazlerabbiador.000webhostapp.com/medex/addBloodRequ.php";
-
+                            final String URL_DATA = "http://192.168.0.103/PHP_Practice/medex/addBloodRequ.php";
+                            
 
 
                             // Creating string request with post method.
