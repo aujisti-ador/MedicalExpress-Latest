@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.ador.medicalexpress.models.Hospital;
+import com.ador.medicalexpress.activities.HospitalClick;
+import com.ador.medicalexpress.R;
 
 import java.util.ArrayList;
 

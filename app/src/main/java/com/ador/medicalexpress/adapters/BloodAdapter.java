@@ -1,11 +1,16 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.adapters;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.ador.medicalexpress.models.BloodRequestClass;
+import com.ador.medicalexpress.R;
 
 import java.util.ArrayList;
 
@@ -29,13 +34,23 @@ public class BloodAdapter extends RecyclerView.Adapter<BloodAdapter.Viewholder> 
     }
 
     @Override
-    public void onBindViewHolder(Viewholder holder, int position) {
+    public void onBindViewHolder(final Viewholder holder, int position) {
 
         holder.tv_name.setText(arrayList.get(position).getName());
         holder.tv_location.setText(arrayList.get(position).getLocation());
         holder.tv_phoneNumber.setText(arrayList.get(position).getPhoneNumber());
         holder.tv_date.setText(arrayList.get(position).getDate());
         holder.tv_bloodGroup.setText(arrayList.get(position).getBloodGroup());
+
+        holder.btn_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String number = holder.tv_phoneNumber.getText().toString();
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:"+Uri.encode(number.trim())));
+                ctx.startActivity(callIntent);
+            }
+        });
 
     }
 

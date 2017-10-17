@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,6 +21,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ador.medicalexpress.R;
+import com.ador.medicalexpress.adapters.RecyclerAdapter;
+import com.ador.medicalexpress.fragments.GmapFragment;
+import com.ador.medicalexpress.models.DoctorData;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;

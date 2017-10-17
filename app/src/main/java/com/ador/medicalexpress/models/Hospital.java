@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.models;
 
 /**
  * Created by DORBESH on 12/27/2016.

@@ -1,10 +1,13 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.ador.medicalexpress.models.DoctorData;
+import com.ador.medicalexpress.R;
 
 import java.util.ArrayList;
 
@@ -16,7 +19,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 
     ArrayList<DoctorData> arrayList = new ArrayList<>();
 
-    RecyclerAdapter(ArrayList<DoctorData>arrayList){
+    public RecyclerAdapter(ArrayList<DoctorData> arrayList){
 
         this.arrayList = arrayList;
 

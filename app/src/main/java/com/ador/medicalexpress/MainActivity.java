@@ -1,9 +1,6 @@
 package com.ador.medicalexpress;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -20,6 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ador.medicalexpress.adapters.ViewPagerAdapter;
+import com.ador.medicalexpress.fragments.AmbulanceFragment;
+import com.ador.medicalexpress.fragments.BloodFragment;
+import com.ador.medicalexpress.fragments.HospitalFragment;
+import com.ador.medicalexpress.fragments.NearbyFragment;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,7 +29,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +37,6 @@ import static com.ador.medicalexpress.R.drawable.ambulance;
 import static com.ador.medicalexpress.R.drawable.blood;
 import static com.ador.medicalexpress.R.drawable.hospital;
 import static com.ador.medicalexpress.R.drawable.location;
-import static com.ador.medicalexpress.R.drawable.quantum_ic_bigtop_updates_white_24;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -117,12 +117,18 @@ public class MainActivity extends AppCompatActivity {
         int res_id = item.getItemId();
         if (res_id==R.id.action_about)
         {
-            Toast.makeText(this, "About Us!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Knock me: aujisti.ador@gmail.com", Toast.LENGTH_LONG).show();
         }
-        else if (res_id==R.id.action_share)
+        else if (res_id==R.id.action_abt_blood)
         {
-            Toast.makeText(this, "Share!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Share!", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
+            final View mView = getLayoutInflater().inflate(R.layout.about_blood_request,null);
+            alertBuilder.setView(mView);
+            final AlertDialog dialog = alertBuilder.create();
+            dialog.show();
         }
+
         else if (res_id==R.id.action_blood)
         {
 
@@ -218,15 +224,13 @@ public class MainActivity extends AppCompatActivity {
                 );
 
 
-            new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    month=month+1;
-                    String mdate = month + "-" + dayOfMonth + "-" + year;
-                }
-            };
-
-
+//            new DatePickerDialog.OnDateSetListener() {
+//                @Override
+//                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//                    month=month+1;
+//                    String mdate = month + "-" + dayOfMonth + "-" + year;
+//                }
+//            };
 
 
                 requ.setOnClickListener(new View.OnClickListener() {
@@ -248,7 +252,8 @@ public class MainActivity extends AppCompatActivity {
 
                         {
                             //private static final String URL_DATA = "http://fazlerabbiador.000webhostapp.com/medex/getAllEmp.php";
-                            final String URL_DATA = "http://192.168.0.103/PHP_Practice/medex/addEmp.php";
+                            //final String URL_DATA = "http://192.168.0.103/PHP_Practice/medex/addBloodRequ.php";
+                            final String URL_DATA = "https://fazlerabbiador.000webhostapp.com/medex/addBloodRequ.php";
 
 
 

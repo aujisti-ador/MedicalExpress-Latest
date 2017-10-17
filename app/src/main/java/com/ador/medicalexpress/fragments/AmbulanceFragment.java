@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.fragments;
 
 
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.ador.medicalexpress.models.Ambulence;
+import com.ador.medicalexpress.R;
+import com.ador.medicalexpress.adapters.AmbulenceRecyclerAdapter;
 
 import java.util.ArrayList;
 

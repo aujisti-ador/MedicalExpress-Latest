@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.ador.medicalexpress.models.Ambulence;
+import com.ador.medicalexpress.R;
 
 import java.util.ArrayList;
 

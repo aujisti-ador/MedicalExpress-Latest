@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.fragments;
 
 
 import android.content.Intent;
@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+
+import com.ador.medicalexpress.models.Hospital;
+import com.ador.medicalexpress.activities.HospitalClick;
+import com.ador.medicalexpress.R;
+import com.ador.medicalexpress.adapters.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 

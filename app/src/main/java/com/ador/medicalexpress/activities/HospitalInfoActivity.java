@@ -1,13 +1,15 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class DoctorViewActivity extends AppCompatActivity {
+import com.ador.medicalexpress.R;
+
+public class HospitalInfoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_view);
+        setContentView(R.layout.activity_hospital_info);
     }
 }

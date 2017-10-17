@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashScreen"
+            android:name=".activities.SplashScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -52,19 +52,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BloodViewActivity"
+            android:name=".activities.BloodViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DoctorViewActivity"
+            android:name=".activities.DoctorViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HospitalInfoActivity"
+            android:name=".activities.HospitalInfoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HospitalClick"
+            android:name=".activities.HospitalClick"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DirectionActivity"
+            android:name=".activities.DirectionActivity"
             android:screenOrientation="portrait" />
 
         <meta-data

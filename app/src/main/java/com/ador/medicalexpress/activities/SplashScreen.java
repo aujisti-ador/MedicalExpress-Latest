@@ -1,11 +1,12 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 
-import java.util.logging.Handler;
+import com.ador.medicalexpress.MainActivity;
+import com.ador.medicalexpress.R;
 
 public class SplashScreen extends Activity {
     protected boolean _active = true;

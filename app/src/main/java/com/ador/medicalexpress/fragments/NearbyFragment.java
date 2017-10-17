@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.fragments;
 
 
 import android.Manifest;
@@ -22,6 +22,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.ador.medicalexpress.NearBy;
+import com.ador.medicalexpress.R;
+import com.ador.medicalexpress.adapters.NearByAdapter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;

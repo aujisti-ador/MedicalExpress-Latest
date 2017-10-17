@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

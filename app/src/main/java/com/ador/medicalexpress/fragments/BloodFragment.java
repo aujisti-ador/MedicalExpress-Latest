@@ -1,8 +1,6 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.fragments;
 
 
-import android.app.LauncherActivity;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
+import com.ador.medicalexpress.models.BloodRequestClass;
+import com.ador.medicalexpress.R;
+import com.ador.medicalexpress.adapters.BloodAdapter;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,7 +24,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -32,8 +31,8 @@ import java.util.List;
  */
 public class BloodFragment extends Fragment {
 
-    //private static final String URL_DATA = "http://fazlerabbiador.000webhostapp.com/medex/getAllEmp.php";
-    private static final String URL_DATA = "http://192.168.0.103/PHP_Practice/medex/getAllEmp.php";
+    private static final String URL_DATA = "https://fazlerabbiador.000webhostapp.com/medex/getBloodRequ.php";
+    //private static final String URL_DATA = "http://192.168.0.103/PHP_Practice/medex/getBloodRequ.php";
     //ListView listView;
     //List<BloodRequestClass> listItems;
     RecyclerView recyclerView;
@@ -71,6 +70,14 @@ public class BloodFragment extends Fragment {
 
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        loadRecyclarViewData();
+
+    }
+
 
     private void loadRecyclarViewData()
     {

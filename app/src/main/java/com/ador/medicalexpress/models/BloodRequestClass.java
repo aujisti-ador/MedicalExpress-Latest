@@ -1,4 +1,4 @@
-package com.ador.medicalexpress;
+package com.ador.medicalexpress.models;
 
 /**
  * Created by ADOR'S Lappy on 11-Oct-17.

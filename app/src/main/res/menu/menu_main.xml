@@ -11,8 +11,8 @@
         />
 
     <item
-        android:id="@+id/action_share"
-        android:title="Share"
+        android:id="@+id/action_abt_blood"
+        android:title="About Blood Request"
         android:icon="@drawable/ic_action_share"
         app:showAsAction="withText"
         />

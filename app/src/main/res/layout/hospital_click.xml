@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.ador.medicalexpress.HospitalClick">
+    tools:context="com.ador.medicalexpress.activities.HospitalClick">
 
    <FrameLayout
        android:layout_width="match_parent"
