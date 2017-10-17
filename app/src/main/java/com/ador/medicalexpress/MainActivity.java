@@ -1,6 +1,9 @@
 package com.ador.medicalexpress;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -12,7 +15,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,6 +27,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +36,7 @@ import static com.ador.medicalexpress.R.drawable.ambulance;
 import static com.ador.medicalexpress.R.drawable.blood;
 import static com.ador.medicalexpress.R.drawable.hospital;
 import static com.ador.medicalexpress.R.drawable.location;
-
+import static com.ador.medicalexpress.R.drawable.quantum_ic_bigtop_updates_white_24;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -126,12 +133,100 @@ public class MainActivity extends AppCompatActivity {
                 final EditText blood_group = (EditText) mView.findViewById(R.id.et_bloodGroup);
                 final EditText place = (EditText) mView.findViewById(R.id.et_place);
                 final EditText phone_number = (EditText) mView.findViewById(R.id.et_phone);
-                final EditText date = (EditText) mView.findViewById(R.id.et_date);
+                final TextView date = (TextView) mView.findViewById(R.id.et_date);
+                //final DatePicker date = (DatePicker) mView.findViewById(R.id.et_date);
                 Button requ = (Button) mView.findViewById(R.id.btn_requ);
+
+             //final DateFormat dateFormat = DateFormat.getDateInstance();
+
 
                 alertBuilder.setView(mView);
                 final AlertDialog dialog = alertBuilder.create();
                 dialog.show();
+
+                date.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+
+                        int day, month, year;
+
+
+                        Calendar cal = Calendar.getInstance();
+                        day = cal.get(Calendar.DAY_OF_MONTH);
+                        month = cal.get(Calendar.MONTH);
+                        year = cal.get(Calendar.YEAR);
+                        month = month+1;
+
+                        date.setText(month+"-"+day+"-"+year);
+
+                        DatePickerDialog datePickerDialog =  new DatePickerDialog(MainActivity.this,
+                                new DatePickerDialog.OnDateSetListener() {
+                                    String mmonth;
+                                    @Override
+                                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                        month = month+1;
+
+                                        switch (month)
+                                        {
+                                            case 1:
+                                                mmonth = "Jan";
+                                                break;
+                                            case 2:
+                                                mmonth = "Feb";
+                                                break;
+                                            case 3:
+                                                mmonth = "March";
+                                                break;
+                                            case 4:
+                                                mmonth = "April";
+                                                break;
+                                            case 5:
+                                                mmonth = "May";
+                                                break;
+                                            case 6:
+                                                mmonth = "June";
+                                                break;
+                                            case 7:
+                                                mmonth = "July";
+                                                break;
+                                            case 8:
+                                                mmonth = "Aug";
+                                                break;
+                                            case 9:
+                                                mmonth = "Sept";
+                                                break;
+                                            case 10:
+                                                mmonth = "Oct";
+                                                break;
+                                            case 11:
+                                                mmonth = "Nov";
+                                                break;
+                                            case 12:
+                                                mmonth = "Dec";
+                                                break;
+                                        }
+                                        date.setText(mmonth+"-"+dayOfMonth+"-"+year);
+                                    }
+                                }, year,month,day);
+                        datePickerDialog.show();
+
+
+                    }
+
+                }
+                );
+
+
+            new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    month=month+1;
+                    String mdate = month + "-" + dayOfMonth + "-" + year;
+                }
+            };
+
+
 
 
                 requ.setOnClickListener(new View.OnClickListener() {
@@ -145,10 +240,11 @@ public class MainActivity extends AppCompatActivity {
                             place.setError( "Place is required!" );
                         else if( phone_number.getText().toString().length() == 0 )
                             phone_number.setError( "Phone Number is required!" );
-                        else if( date.getText().toString().length() == 0 )
-                            date.setError( "Date is required!" );
+//                        else if( date.getText().toString().length() == 0 )
+//                            date.setError( "Date is required!" );
 
-                        if (name.getText().toString().length() > 0 && blood_group.getText().toString().length() > 0 && place.getText().toString().length() > 0 && phone_number.getText().toString().length() > 0 && date.getText().toString().length() > 0)
+
+                        if (name.getText().toString().length() > 0 && blood_group.getText().toString().length() > 0 && place.getText().toString().length() > 0 && phone_number.getText().toString().length() > 0 )
 
                         {
                             //private static final String URL_DATA = "http://fazlerabbiador.000webhostapp.com/medex/getAllEmp.php";
@@ -194,6 +290,7 @@ public class MainActivity extends AppCompatActivity {
                                     params.put("place", place.getText().toString());
                                     params.put("phone_number", phone_number.getText().toString());
                                     params.put("date", date.getText().toString());
+                                    //params.put("date", date.toString());
 
                                     return params;
                                 }
@@ -220,4 +317,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
+
+
 }

@@ -42,11 +42,12 @@
         android:layout_height="wrap_content"
         android:hint="Phone Number"/>
 
-    <EditText
+    <TextView
         android:id="@+id/et_date"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Date"/>
+        android:hint="Select Date"/>
 
     <Button
         android:id="@+id/btn_requ"
